@@ -1,0 +1,6 @@
+name: my-extension
+version: 0.0.1
+main: dist/extension.js
+displayName: My Cool Extension
+description: Show something cool
+icon: icon.png
