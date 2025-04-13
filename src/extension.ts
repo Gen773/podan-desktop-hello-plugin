@@ -21,4 +21,22 @@ export async function activate(extensionContext: podmanDesktopAPI.ExtensionConte
   // register disposable resources to it's removed when you deactivte the extension
   extensionContext.subscriptions.push(myFirstCommand);
   extensionContext.subscriptions.push(item);
+
+  console.log('starting hello world extension');
+
+  // Create the webview panel and register it with the extension context.
+  const panel = podmanDesktopAPI.window.createWebviewPanel('helloWorld', 'Hello World');
+  extensionContext.subscriptions.push(panel);
+
+  const exampleWebviewHtml = `
+  <html>
+    <body>
+      <h1>Hello World</h1>
+    </body>
+  </html>
+  `;
+
+  // Add the example webview HTML to the webview panel. For more advanced webview usage see our "full" template: https://github.com/containers/podman-desktop-extension-full-template
+  // for a more advanced html configuration such as using Svelte / TailwindCSS / etc.
+  panel.webview.html = exampleWebviewHtml;
 }
